@@ -1,0 +1,6 @@
+-- Write a solution to find all customers who never order anything.
+
+-- Beats 91.1% of the solution
+SELECT a.name as Customers
+FROM Customers a
+WHERE a.id NOT IN (SELECT b.customerId FROM Orders b)
