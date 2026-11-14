@@ -1,0 +1,8 @@
+-- Write a solution to find the first login date for each player.
+-- Return the result table in any order.
+
+-- Beats 75.16% of the solutions
+SELECT player_id
+      ,TO_CHAR(MIN(event_date), 'YYYY-MM-DD') AS first_login
+FROM Activity
+GROUP BY player_id;
