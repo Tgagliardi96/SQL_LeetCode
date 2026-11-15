@@ -1,0 +1,9 @@
+-- Write a solution to find the customer_number for the customer who has placed the largest number of orders.
+
+SELECT customer_number
+FROM (
+SELECT customer_number
+      ,ROW_NUMBER() OVER(ORDER BY COUNT(1) DESC) rn
+FROM Orders
+GROUP BY customer_number)
+WHERE rn = 1;
