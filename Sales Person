@@ -1,0 +1,12 @@
+-- Write a solution to find the names of all the salespersons who did not have any orders related to the company with the name "RED".
+
+SELECT b.name
+FROM SalesPerson b
+LEFT JOIN SalesPerson c
+ON b.sales_id = c.sales_id
+WHERE b.sales_id NOT IN (
+SELECT ord.sales_id
+FROM Company com
+INNER JOIN Orders ord
+ON com.com_id = ord.com_id
+WHERE com.name = 'RED')
